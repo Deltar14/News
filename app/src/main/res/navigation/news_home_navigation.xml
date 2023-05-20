@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/newsNavigation"
+	app:startDestination="@id/newsListFragment">
+
+	<fragment
+		android:id="@+id/newsListFragment"
+		android:name="com.news.ui.news.NewsPageFragment"
+		android:label="SaleHistoryFragment"
+		tools:layout="@layout/fragment_news_page">
+<!--		<action android:id="@+id/toLicenseCustomer"-->
+<!--			app:destination="@id/license_customer_navigation"-->
+<!--			app:enterAnim="@anim/slide_in_right"-->
+<!--			app:exitAnim="@anim/slide_out_left"-->
+<!--			app:popEnterAnim="@anim/slide_in_left"-->
+<!--			app:popExitAnim="@anim/slide_out_right">-->
+<!--			<argument android:name="saleHistory"-->
+<!--				app:argType="com.lawyerplusgroup.lawyerplus.history.domain.SaleHistory"/>-->
+<!--		</action>-->
+	</fragment>
+</navigation>
