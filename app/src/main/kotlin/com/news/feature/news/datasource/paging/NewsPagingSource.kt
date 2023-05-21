@@ -2,12 +2,13 @@ package com.news.feature.news.datasource.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.news.feature.news.datasource.network.NewsApi
 import com.news.BuildConfig
+import com.news.feature.news.datasource.network.NewsApi
 import com.news.feature.news.datasource.network.NewsItemsResponse
 import com.news.feature.news.datasource.network.NewsItemsResponse.Companion.toUiModel
 import com.news.feature.news.domain.NewsItemsModel
-import com.news.utils.exceptions.NetworkException
+import com.news.utils.dataholder.ResponseModel
+import com.news.utils.dataholder.exceptions.NetworkException
 import retrofit2.Response
 import kotlin.math.ceil
 
@@ -35,17 +36,17 @@ class NewsPagingSource(
 				page = page, pageSize = PAGE_SIZE
 			)
 			val body = processResponse(response)
-			val listData = body.toUiModel()
-			val maxPage = ceil((body.totalResults ?: 0).toDouble() / PAGE_SIZE).toInt()
+			val listData = body.data?.toUiModel()
+			val maxPage = ceil((body.data?.totalResults ?: 0).toDouble() / PAGE_SIZE).toInt()
 			val nextKey =
-				if (listData.isEmpty() or (page + 1 == maxPage)) null else page.plus(1)
+				if (listData.isNullOrEmpty() or (page + 1 == maxPage)) null else page.plus(1)
 			val preKey = if (page == INITIAL_PAGE) null else page.minus(1)
 			LoadResult.Page(
-				data = listData,
+				data = listData ?: emptyList(),
 				nextKey = nextKey,
 				prevKey = preKey
 			)
-		} catch (exception: Exception) {
+		} catch (exception: NetworkException) {
 			LoadResult.Error(exception)
 		}
 	}
@@ -58,9 +59,11 @@ class NewsPagingSource(
 		}
 	}
 
-	private fun processResponse(response: Response<NewsItemsResponse>): NewsItemsResponse {
+	private fun processResponse(response: Response<ResponseModel<NewsItemsResponse>>): ResponseModel<NewsItemsResponse> {
 		return if (response.isSuccessful) {
-			response.body() ?: throw NetworkException()
+			response.body()?.apply {
+				if (data == null) throw NetworkException(mes = message)
+			} ?: throw NetworkException()
 		} else throw NetworkException()
 	}
 

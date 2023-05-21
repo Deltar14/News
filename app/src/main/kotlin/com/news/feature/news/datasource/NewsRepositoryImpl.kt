@@ -1,6 +1,8 @@
 package com.news.feature.news.datasource
 
-import androidx.paging.*
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.news.feature.news.datasource.network.NewsApi
 import com.news.feature.news.datasource.paging.NewsPagingSource
 import com.news.feature.news.domain.NewsItemsModel

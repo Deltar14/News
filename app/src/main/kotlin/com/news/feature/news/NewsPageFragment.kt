@@ -1,10 +1,8 @@
 package com.news.feature.news
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
-import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.news.R
@@ -16,8 +14,6 @@ import com.news.utils.base.BaseFragment
 import com.news.utils.dialog.CommonAlertDialog
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
-import kotlin.concurrent.schedule
 
 class NewsPageFragment : BaseFragment<FragmentNewsPageBinding>() {
 
@@ -66,16 +62,7 @@ class NewsPageFragment : BaseFragment<FragmentNewsPageBinding>() {
 				}
 
 				override fun onQueryTextChange(query: String?): Boolean {
-					if (!query.isNullOrBlank() && query.length >= MINIMUM_CHARACTER_LENGTH_SEARCH) {
-						Timer().schedule(delay = DEFAULT_DELAY_SEARCH) {
-							lifecycleScope.launchWhenResumed {
-								viewModel.getNews(query).collectLatest {
-									adapter.submitData(it)
-								}
-							}
-						}
-					}
-					return false
+					return true
 				}
 			})
 		}
@@ -93,8 +80,6 @@ class NewsPageFragment : BaseFragment<FragmentNewsPageBinding>() {
 	}
 
 	private fun navigateToArticleDetail(newsItemsModel: NewsItemsModel) {
-//		val bundle = bundleOf("newsItemsModel" to newsItemsModel)
-
 		val directions = NewsPageFragmentDirections.toNewsDetails(newsItemsModel)
 		findNavController().navigate(directions)
 	}
