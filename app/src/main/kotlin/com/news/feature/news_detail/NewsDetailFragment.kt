@@ -2,23 +2,13 @@ package com.news.feature.news_detail
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import coil.load
 import com.news.R
 import com.news.databinding.FragmentNewsDetailsBinding
-import com.news.databinding.FragmentNewsPageBinding
-import com.news.extensions.hideKeyboard
 import com.news.extensions.toDateTimeFormat
-import com.news.feature.news.adapter.NewsListAdapter
 import com.news.feature.news.domain.NewsItemsModel
 import com.news.utils.base.BaseFragment
-import com.news.utils.dialog.CommonAlertDialog
-import kotlinx.coroutines.flow.collectLatest
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
-import kotlin.concurrent.schedule
 
 class NewsDetailFragment : BaseFragment<FragmentNewsDetailsBinding>() {
 
