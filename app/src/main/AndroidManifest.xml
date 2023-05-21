@@ -17,7 +17,7 @@
 		android:theme="@style/Theme.NewsApplication"
 		tools:targetApi="31">
 		<activity
-			android:name=".ui.NewsHomeActivity"
+			android:name=".feature.NewsHomeActivity"
 			android:exported="true"
 			android:screenOrientation="portrait"
 			tools:ignore="LockedOrientationActivity">

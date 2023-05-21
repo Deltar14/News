@@ -16,11 +16,11 @@ open class BaseViewModel: ViewModel(), ObserveLoadingState {
 	override val loadingState: LiveData<Boolean>
 		get() = _loadingState
 
-	private fun showLoading() {
+	fun showLoading() {
 		_loadingState.postValue(true)
 	}
 
-	private fun hideLoading() {
+	fun hideLoading() {
 		_loadingState.postValue(false)
 	}
 }
