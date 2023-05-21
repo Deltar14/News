@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.news.extensions.hideKeyboard
 import com.news.utils.dialog.LoadingDialog
 
 abstract class BaseFragment<Binding: ViewBinding>: Fragment()  {
@@ -60,6 +61,10 @@ abstract class BaseFragment<Binding: ViewBinding>: Fragment()  {
 
 	protected open fun initListener() {}
 
+	override fun onStop() {
+		super.onStop()
+		binding.root.hideKeyboard()
+	}
 
 	override fun onDestroyView() {
 		super.onDestroyView()

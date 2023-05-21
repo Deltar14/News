@@ -9,23 +9,20 @@ import com.news.feature.news.domain.usecase.GetNewsUseCase
 import com.news.utils.base.BaseViewModel
 import com.news.utils.livedata.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.*
 
 class NewsPageViewModel(
-	private val getNewsUseCase: GetNewsUseCase
+	private val getNewsUseCase: GetNewsUseCase,
 ) : BaseViewModel() {
 
 	private val _showMessageError = SingleLiveEvent<String?>()
 	val showMessageError: LiveData<String?>
 		get() = _showMessageError
 
-	fun getNews(): Flow<PagingData<NewsItemsModel>> {
-		return getNewsUseCase.fetchNews()
+	fun getNews(keyword: String? = null): Flow<PagingData<NewsItemsModel>> {
+		return getNewsUseCase.fetchNews(keyword)
 			.cachedIn(viewModelScope)
 			.flowOn(Dispatchers.IO)
 			.catch { _showMessageError.postValue(it.message) }
 	}
-
 }

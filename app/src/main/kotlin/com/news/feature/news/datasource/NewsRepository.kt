@@ -5,5 +5,5 @@ import com.news.feature.news.domain.NewsItemsModel
 import kotlinx.coroutines.flow.Flow
 
 interface NewsRepository {
-	fun getNews(): Flow<PagingData<NewsItemsModel>>
+	fun getNews(keyword: String?): Flow<PagingData<NewsItemsModel>>
 }

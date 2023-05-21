@@ -22,7 +22,7 @@ class NewsListViewHolder(private val binding: ItemNewsBinding) :
 			}
 			titleTextView.text = newsItemsModel.title
 			descriptionTextView.text = newsItemsModel.description
-			updateTextView.text = newsItemsModel.publishedAt.toDateTimeFormat()
+			publishedAtTextView.text = newsItemsModel.publishedAt.toDateTimeFormat()
 			iconChevronImageView.setOnClickWithDelay {
 				onClick.invoke(newsItemsModel)
 			}

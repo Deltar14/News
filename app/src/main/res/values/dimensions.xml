@@ -15,5 +15,5 @@
 	<dimen name="loading_size">100dp</dimen>
 	<dimen name="image_article_height">140dp</dimen>
 	<dimen name="image_article_width">160dp</dimen>
-
+	<dimen name="image_article_full_height">240dp</dimen>
 </resources>

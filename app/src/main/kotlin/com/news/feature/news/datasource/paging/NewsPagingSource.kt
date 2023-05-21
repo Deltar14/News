@@ -11,7 +11,11 @@ import com.news.utils.exceptions.NetworkException
 import retrofit2.Response
 import kotlin.math.ceil
 
-class NewsPagingSource(private val api: NewsApi) : PagingSource<Int, NewsItemsModel>() {
+class NewsPagingSource(
+	private val api: NewsApi,
+	private val keyword: String?
+) :
+	PagingSource<Int, NewsItemsModel>() {
 
 	override fun getRefreshKey(state: PagingState<Int, NewsItemsModel>): Int? {
 		return state.anchorPosition?.let { anchorPosition ->
@@ -26,7 +30,7 @@ class NewsPagingSource(private val api: NewsApi) : PagingSource<Int, NewsItemsMo
 			val apiKey = BuildConfig.API_KEY
 			val response = api.getNews(
 				apiKey = apiKey,
-				keyword = "everything",
+				keyword = getKeyword(),
 				language = "en",
 				page = page, pageSize = PAGE_SIZE
 			)
@@ -46,6 +50,14 @@ class NewsPagingSource(private val api: NewsApi) : PagingSource<Int, NewsItemsMo
 		}
 	}
 
+	private fun getKeyword(): String {
+		return if (keyword.isNullOrBlank()) {
+			DEFAULT_KEY_WORD
+		} else {
+			keyword
+		}
+	}
+
 	private fun processResponse(response: Response<NewsItemsResponse>): NewsItemsResponse {
 		return if (response.isSuccessful) {
 			response.body() ?: throw NetworkException()
@@ -55,5 +67,6 @@ class NewsPagingSource(private val api: NewsApi) : PagingSource<Int, NewsItemsMo
 	companion object {
 		const val INITIAL_PAGE = 1
 		const val PAGE_SIZE = 10
+		private const val DEFAULT_KEY_WORD = "everything"
 	}
 }

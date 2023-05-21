@@ -14,11 +14,7 @@ import retrofit2.Retrofit
 
 @ExperimentalCoroutinesApi
 val repositoryModule = module {
-	factory<NewsApi> { get<Retrofit>().create(NewsApi::class.java) }
-	factoryOf(::NewsRepositoryImpl) { bind<NewsRepository>() }
-
 	//News
 	factory<NewsApi> { get<Retrofit>().create(NewsApi::class.java) }
-	factory<PagingSource<Int, NewsItemsModel>> { NewsPagingSource(get()) }
 	factory<NewsRepository> { NewsRepositoryImpl(get()) }
 }

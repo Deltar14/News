@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="NewsToolbar">
+		<attr name="title" format="string" />
+		<attr name="showButtonLeft" format="boolean" />
+	</declare-styleable>
+</resources>

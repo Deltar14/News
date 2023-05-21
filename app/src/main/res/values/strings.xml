@@ -1,6 +1,9 @@
 <resources>
 	<string name="app_name">News</string>
-	<string name="common_sorry">ขออภัย</string>
-	<string name="common_message_error">มีบางอย่างผิดพลาด\nกรุณาลองใหม่อีกครั้ง</string>
-	<string name="common_try_again">ลองอีกครั้ง</string>
+	<string name="common_sorry">Sorry</string>
+	<string name="common_message_error">Something went wrong</string>
+	<string name="common_try_again">Try Again</string>
+	<string name="common_search">Search Here</string>
+	<string name="title_news_page">News</string>
+	<string name="title_news_detail_page">Details</string>
 </resources>
