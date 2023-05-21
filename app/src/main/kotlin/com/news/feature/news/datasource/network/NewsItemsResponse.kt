@@ -21,7 +21,7 @@ data class NewsItemsResponse(
 			val newsModelList: MutableList<NewsItemsModel> = mutableListOf()
 			this.articles?.forEach {
 				val newsModel = NewsItemsModel()
-				newsModel.source = it.source ?: SourceModel()
+				newsModel.source = mapSourceModel(it.source)
 				newsModel.author = it.author.orEmpty()
 				newsModel.title = it.title.orEmpty()
 				newsModel.description = it.description.orEmpty()
@@ -32,6 +32,13 @@ data class NewsItemsResponse(
 				newsModelList.add(newsModel)
 			}
 			return newsModelList.toList()
+		}
+
+		private fun mapSourceModel(source: SourceModel?): SourceModel {
+			return SourceModel(
+				id = source?.id.orEmpty(),
+				name = source?.name.orEmpty()
+			)
 		}
 	}
 }

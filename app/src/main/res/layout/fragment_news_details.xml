@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:bind="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools">
 
 	<androidx.constraintlayout.widget.ConstraintLayout
@@ -47,7 +46,6 @@
 			android:layout_marginTop="@dimen/space_x_small"
 			android:ellipsize="end"
 			android:gravity="start"
-			android:maxLines="6"
 			app:layout_constraintTop_toBottomOf="@id/titleTextView"
 			tools:text="Expires May 19, 2024 23:59 PST\n Buy now and get 20% off\n KEY FEATURES\nWhat better replacement cable than one that looks just like the original? Enjoy a great cable length with great added features with this…" />
 
