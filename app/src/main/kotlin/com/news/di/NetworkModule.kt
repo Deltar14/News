@@ -50,7 +50,7 @@ val networkModule = module {
 }
 
 object NetworkConstants {
-	const val BASE_URL = "https://testapi.io/api/razir/"
+	const val BASE_URL = "https://newsapi.org/v2/"
 	const val CHUCKER_MAX_CONTENT = 25000L
 	const val TIME_OUT = 30L
 }

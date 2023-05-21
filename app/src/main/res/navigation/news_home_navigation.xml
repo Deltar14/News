@@ -7,7 +7,7 @@
 
 	<fragment
 		android:id="@+id/newsListFragment"
-		android:name="com.news.ui.news.NewsPageFragment"
+		android:name="com.news.feature.news.NewsPageFragment"
 		android:label="SaleHistoryFragment"
 		tools:layout="@layout/fragment_news_page">
 <!--		<action android:id="@+id/toLicenseCustomer"-->
