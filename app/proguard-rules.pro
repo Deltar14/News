@@ -24,6 +24,4 @@
 -keep class * extends androidx.fragment.app.Fragment{}
 -keepnames class * extends android.os.Parcelable
 -keepnames class * extends java.io.Serializable
-#-keep class com.news.feature.news.domain.NewsItemsModel
-#-keep class com.news.feature.news.domain.SourceModel
 
