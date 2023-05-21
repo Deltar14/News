@@ -3,6 +3,7 @@ plugins {
 	id("kotlin-android")
 	id("kotlin-parcelize")
 	id("kotlin-kapt")
+	id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -91,4 +92,8 @@ dependencies {
 
 	//Lottie
 	implementation("com.airbnb.android:lottie:4.2.2")
+
+	//Paging
+	implementation("androidx.paging:paging-runtime-ktx:3.1.1")
+	testImplementation("androidx.paging:paging-common-ktx:3.1.1")
 }

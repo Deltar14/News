@@ -3,21 +3,29 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/newsNavigation"
-	app:startDestination="@id/newsListFragment">
+	app:startDestination="@id/newsPageFragment">
 
 	<fragment
-		android:id="@+id/newsListFragment"
-		android:name="com.news.ui.news.NewsPageFragment"
-		android:label="SaleHistoryFragment"
+		android:id="@+id/newsPageFragment"
+		android:name="com.news.feature.news.NewsPageFragment"
+		android:label="NewsPage"
 		tools:layout="@layout/fragment_news_page">
-<!--		<action android:id="@+id/toLicenseCustomer"-->
-<!--			app:destination="@id/license_customer_navigation"-->
-<!--			app:enterAnim="@anim/slide_in_right"-->
-<!--			app:exitAnim="@anim/slide_out_left"-->
-<!--			app:popEnterAnim="@anim/slide_in_left"-->
-<!--			app:popExitAnim="@anim/slide_out_right">-->
-<!--			<argument android:name="saleHistory"-->
-<!--				app:argType="com.lawyerplusgroup.lawyerplus.history.domain.SaleHistory"/>-->
-<!--		</action>-->
+		<action
+			android:id="@+id/toNewsDetails"
+			app:destination="@id/newsDetailsFragment"
+			app:enterAnim="@anim/slide_in_right"
+			app:exitAnim="@anim/slide_out_left"
+			app:popEnterAnim="@anim/slide_in_left"
+			app:popExitAnim="@anim/slide_out_right" />
+	</fragment>
+	<fragment
+		android:id="@+id/newsDetailsFragment"
+		android:name="com.news.feature.news_detail.NewsDetailFragment"
+		android:label="NewsDetails"
+		tools:layout="@layout/fragment_news_details">
+		<argument
+			android:name="newsItemModel"
+			app:argType="com.news.feature.news.domain.NewsItemsModel"
+			app:nullable="false" />
 	</fragment>
 </navigation>

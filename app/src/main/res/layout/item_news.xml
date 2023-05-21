@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/layoutItemProfileNotification"
+	android:layout_width="match_parent"
+	android:layout_marginTop="@dimen/space_normal"
+	android:layout_height="wrap_content">
+
+	<androidx.appcompat.widget.AppCompatImageView
+		android:id="@+id/newsImageView"
+		android:layout_width="@dimen/image_article_width"
+		android:layout_height="@dimen/image_article_height"
+		android:adjustViewBounds="true"
+		android:scaleType="fitXY"
+		android:src="@drawable/image_placeholder"
+		app:layout_constraintEnd_toEndOf="@id/iconChevronImageView"
+		android:layout_marginStart="@dimen/space_x_small"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		tools:visibility="visible" />
+
+	<androidx.appcompat.widget.AppCompatImageView
+		android:id="@+id/iconChevronImageView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="@dimen/space_x_small"
+		android:src="@drawable/chevron_right_solid"
+		app:layout_constraintBottom_toBottomOf="@id/newsImageView"
+		app:layout_constraintEnd_toEndOf="parent" />
+
+	<androidx.appcompat.widget.AppCompatTextView
+		android:id="@+id/titleTextView"
+		style="@style/TextAppearance.AppCompat.Headline"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="@dimen/space_normal"
+		android:layout_marginTop="@dimen/space_normal"
+		android:ellipsize="end"
+		android:gravity="center"
+		android:maxLines="1"
+		app:layout_constraintTop_toBottomOf="@id/newsImageView"
+		tools:text="Fast Charging MFI-Certified USB-A Lightning Cable (2 Meters) for $19" />
+
+	<androidx.appcompat.widget.AppCompatTextView
+		android:id="@+id/descriptionTextView"
+		style="@style/TextAppearance.AppCompat.Subhead"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="@dimen/space_normal"
+		android:layout_marginTop="@dimen/space_x_small"
+		android:ellipsize="end"
+		android:gravity="center"
+		android:maxLines="6"
+		app:layout_constraintTop_toBottomOf="@id/titleTextView"
+		tools:text="Expires May 19, 2024 23:59 PST\n Buy now and get 20% off\n KEY FEATURES\nWhat better replacement cable than one that looks just like the original? Enjoy a great cable length with great added features with this…" />
+
+	<androidx.appcompat.widget.AppCompatTextView
+		android:id="@+id/publishedAtTextView"
+		style="@style/TextAppearance.AppCompat.Caption"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="@dimen/space_normal"
+		android:layout_marginTop="@dimen/space_normal"
+		android:gravity="center"
+		app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
+		tools:text="2023-05-20T07:00:00Z" />
+
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:layout_marginTop="@dimen/space_normal"
+		android:background="@android:color/darker_gray"
+		app:layout_constraintTop_toBottomOf="@id/publishedAtTextView"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

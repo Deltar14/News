@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:bind="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools">
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
+
+		<com.news.utils.widget.NewsToolbar
+			android:id="@+id/newsPageToolbar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<androidx.appcompat.widget.SearchView
+			android:id="@+id/searchView"
+			style="@style/TextAppearance.AppCompat.Small"
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/space_x_large"
+			android:background="@color/red_light_salmon"
+			android:imeOptions="actionSearch"
+			android:maxLength="500"
+			app:layout_constraintTop_toBottomOf="@id/newsPageToolbar"
+			app:queryHint="@string/common_search" />
 
 		<androidx.recyclerview.widget.RecyclerView
 			android:id="@+id/newsRecyclerView"
@@ -17,7 +33,8 @@
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
-			tools:itemCount="20"/>
+			app:layout_constraintTop_toBottomOf="@id/searchView"
+			tools:itemCount="20"
+			tools:listitem="@layout/item_news" />
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
