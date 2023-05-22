@@ -7,8 +7,7 @@ import com.news.feature.news.datasource.network.NewsApi
 import com.news.feature.news.datasource.network.NewsItemsResponse
 import com.news.feature.news.datasource.network.NewsItemsResponse.Companion.toUiModel
 import com.news.feature.news.domain.NewsItemsModel
-import com.news.utils.dataholder.ResponseModel
-import com.news.utils.dataholder.exceptions.NetworkException
+import com.news.utils.exceptions.NetworkException
 import retrofit2.Response
 import kotlin.math.ceil
 
@@ -36,13 +35,13 @@ class NewsPagingSource(
 				page = page, pageSize = PAGE_SIZE
 			)
 			val body = processResponse(response)
-			val listData = body.data?.toUiModel()
-			val maxPage = ceil((body.data?.totalResults ?: 0).toDouble() / PAGE_SIZE).toInt()
+			val listData = body.toUiModel()
+			val maxPage = ceil((body.totalResults ?: 0).toDouble() / PAGE_SIZE).toInt()
 			val nextKey =
-				if (listData.isNullOrEmpty() or (page + 1 == maxPage)) null else page.plus(1)
+				if (listData.isEmpty() or (page + 1 == maxPage)) null else page.plus(1)
 			val preKey = if (page == INITIAL_PAGE) null else page.minus(1)
 			LoadResult.Page(
-				data = listData ?: emptyList(),
+				data = listData,
 				nextKey = nextKey,
 				prevKey = preKey
 			)
@@ -59,11 +58,9 @@ class NewsPagingSource(
 		}
 	}
 
-	private fun processResponse(response: Response<ResponseModel<NewsItemsResponse>>): ResponseModel<NewsItemsResponse> {
+	private fun processResponse(response: Response<NewsItemsResponse>): NewsItemsResponse {
 		return if (response.isSuccessful) {
-			response.body()?.apply {
-				if (data == null) throw NetworkException(mes = message)
-			} ?: throw NetworkException()
+			response.body() ?: throw NetworkException()
 		} else throw NetworkException()
 	}
 
